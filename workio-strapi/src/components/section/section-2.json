@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_section_section_2s",
+  "info": {
+    "displayName": "section-2"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "perex": {
+      "type": "text"
+    },
+    "perex2": {
+      "type": "text"
+    },
+    "picture": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "blocks": {
+      "displayName": "blocks",
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.blocks"
+    }
+  }
+}
