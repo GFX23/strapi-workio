@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./_components/Navbar";
+import Navbar from "../_components/Navbar";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -21,7 +21,6 @@ const RootLayout = async ({
         <div className="bg-wblue-100">
           <Navbar />
           {children}
-          
         </div>
       </body>
     </html>

@@ -1,78 +1,83 @@
-
 import { gql } from "@apollo/client";
 import { NextPage } from "next";
-import { apolloClient } from "../apolloClient";
-import { HomepageEntity, HomepageEntityResponse } from "./_gql/graphql";
-import { Headline } from "./_components/Headline";
+import { apolloClient } from "../../apolloClient";
+import { HomepageEntity } from "../_gql/graphql";
+import { Headline } from "../_components/Headline";
 import Image from "next/image";
-import { siteConfig } from "../siteConfig";
-import { Button } from "./_components/ButtonLink";
-import { useRouter } from "next/navigation";
+import { siteConfig } from "../../siteConfig";
+import { ButtonLink } from "../_components/ButtonLink";
 
-const Home: NextPage = async () => {
-  const router = useRouter();
+type Props = {
+  params: { [lang: string]: string };
+};
 
+const Home: NextPage<Props> = async ({ params: { lang } }) => {
   const getHomepageData = gql`
-    query Homepage {
-  homepage{
-    data{
-      id
-      attributes {
-        section1 {
-          title
-          perex
-          linkButton {
-            link
-            title
-            style
-          }
-          picture{
-            data{
-              attributes{
-                name
-                width
-                height
-                url
-                alternativeText
+    query ($locale: I18NLocaleCode) {
+      homepage(locale: $locale) {
+        data {
+          id
+          attributes {
+            section1 {
+              title
+              perex
+              linkButton {
+                link
+                title
+                style
+              }
+              picture {
+                data {
+                  attributes {
+                    name
+                    width
+                    height
+                    url
+                    alternativeText
+                  }
+                }
+              }
+            }
+            section2 {
+              title
+              subTitle
+              perex
+              perex2
+              picture {
+                data {
+                  attributes {
+                    name
+                    width
+                    height
+                    url
+                    alternativeText
+                  }
+                }
+              }
+              blocks {
+                icon {
+                  data {
+                    attributes {
+                      width
+                      height
+                      alternativeText
+                      url
+                    }
+                  }
+                }
+                title
+                perex
               }
             }
           }
         }
-        section2{
-          title
-          subTitle
-          perex
-          perex2
-          picture {
-            data{
-              attributes{
-                name
-                width
-                height
-                url
-                alternativeText
-              }
-            }
-          }
-          blocks {
-            icon {
-              data{
-                attributes{
-                  width
-                	height
-                  alternativeText
-                	url
-                }
-              }
-            }
-          	title
-          	perex
-          }
-        }}}}}
+      }
+    }
   `;
 
   const r = await apolloClient.query({
     query: getHomepageData,
+    variables: { locale: lang },
   });
 
   const data = r.data.homepage.data as HomepageEntity;
@@ -81,11 +86,12 @@ const Home: NextPage = async () => {
   const section2 = data?.attributes?.section2;
 
   console.log(data);
+  console.log(lang);
 
   return (
     <main className="flex relative min-h-screen flex-col max-w-7xl mx-auto items-center pt-24 bg-wblue-100">
       <div className="w-[484px] h-[484px] absolute bg-gradient-to-r from-wred-500 rounded-full rotate-[150deg] -right-96 top-96"></div>
-      <div className="w-[787px] h-[787px] absolute bg-gradient-to-r from-wblue-500 rounded-full rotate-[250deg] -left-[850px] top-96"></div>
+      <div className="w-[787px] h-[787px] absolute bg-gradient-to-r from-wblue-500 rounded-full rotate-[250deg] -left-[850px] top-56"></div>
       <div
         id="section1"
         className="flex max-h-[700px] min-h-[600px] px-10 w-full pt-10"
@@ -99,7 +105,7 @@ const Home: NextPage = async () => {
           <p className="p mt-8">{section1?.perex}</p>
           <div className="flex gap-6 mt-8">
             {section1?.linkButton?.map((button, idx) => (
-              <Button
+              <ButtonLink
                 key={idx}
                 link={button?.link || ""}
                 label={button?.title!}

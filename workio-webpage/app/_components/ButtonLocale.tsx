@@ -1,14 +1,17 @@
 "use client";
 
-import { title } from "process";
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import cs from "classnames";
+import { useParams, useRouter } from "next/navigation";
 
 export const ButtonLocale: React.FC = () => {
-  console.log(document.documentElement.lang)
-  const [selectedLocale, setSelectedLocale] = useState<"cs" | "en">("cs");
+  const router = useRouter();
+  const params = useParams();
+  const [selectedLocale, setSelectedLocale] = useState<"cs" | "en">(params.lang as "cs" | "en");
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log(params)
 
   const flags = {
     cs: "🇨🇿",
@@ -23,7 +26,7 @@ export const ButtonLocale: React.FC = () => {
   const handleChangeLocale = (locale: "cs" | "en") => {
     setSelectedLocale(locale);
     setIsOpen(false);   
-    document.documentElement.lang = locale;
+    router.push(locale)
   }
 
 

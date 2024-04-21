@@ -70,7 +70,7 @@
 
 @layer base {
   .link {
-    @apply p-bold hover:text-wred-500 flex items-center;
+    @apply p-bold hover:text-wblue-500 flex items-center;
   }
 
   .center-all {
