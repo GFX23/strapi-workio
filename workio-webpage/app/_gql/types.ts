@@ -1,5 +1,3 @@
-/* eslint-disable */
-import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -14,14 +12,86 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: { input: any; output: any; }
-  /** A string used to identify an i18n locale */
   I18NLocaleCode: { input: any; output: any; }
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   JSON: { input: any; output: any; }
-  /** The `Upload` scalar type represents a file upload. */
   Upload: { input: any; output: any; }
+};
+
+export type BlogPost = {
+  __typename?: 'BlogPost';
+  created: Scalars['String']['output'];
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  image?: Maybe<UploadFileEntityResponse>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<BlogPostRelationResponseCollection>;
+  perex?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  subSection?: Maybe<Array<Maybe<ComponentBlogPostSubSection>>>;
+  title: Scalars['String']['output'];
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type BlogPostLocalizationsArgs = {
+  filters?: InputMaybe<BlogPostFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type BlogPostSubSectionArgs = {
+  filters?: InputMaybe<ComponentBlogPostSubSectionFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type BlogPostEntity = {
+  __typename?: 'BlogPostEntity';
+  attributes?: Maybe<BlogPost>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type BlogPostEntityResponse = {
+  __typename?: 'BlogPostEntityResponse';
+  data?: Maybe<BlogPostEntity>;
+};
+
+export type BlogPostEntityResponseCollection = {
+  __typename?: 'BlogPostEntityResponseCollection';
+  data: Array<BlogPostEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type BlogPostFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>;
+  created?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  locale?: InputMaybe<StringFilterInput>;
+  localizations?: InputMaybe<BlogPostFiltersInput>;
+  not?: InputMaybe<BlogPostFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>;
+  perex?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  subSection?: InputMaybe<ComponentBlogPostSubSectionFiltersInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type BlogPostInput = {
+  created?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['ID']['input']>;
+  perex?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  subSection?: InputMaybe<Array<InputMaybe<ComponentBlogPostSubSectionInput>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type BlogPostRelationResponseCollection = {
+  __typename?: 'BlogPostRelationResponseCollection';
+  data: Array<BlogPostEntity>;
 };
 
 export type BooleanFilterInput = {
@@ -49,6 +119,70 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type Cenik = {
+  __typename?: 'Cenik';
+  cenikBlock?: Maybe<Array<Maybe<ComponentBlocksCenik>>>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<CenikRelationResponseCollection>;
+  perex?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  subTitle?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type CenikCenikBlockArgs = {
+  filters?: InputMaybe<ComponentBlocksCenikFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type CenikLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type CenikEntity = {
+  __typename?: 'CenikEntity';
+  attributes?: Maybe<Cenik>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type CenikEntityResponse = {
+  __typename?: 'CenikEntityResponse';
+  data?: Maybe<CenikEntity>;
+};
+
+export type CenikInput = {
+  cenikBlock?: InputMaybe<Array<InputMaybe<ComponentBlocksCenikInput>>>;
+  perex?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  subTitle?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CenikRelationResponseCollection = {
+  __typename?: 'CenikRelationResponseCollection';
+  data: Array<CenikEntity>;
+};
+
+export type ComponentAddressLocation = {
+  __typename?: 'ComponentAddressLocation';
+  address?: Maybe<Scalars['String']['output']>;
+  googleUrl?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentAddressLocationInput = {
+  address?: InputMaybe<Scalars['String']['input']>;
+  googleUrl?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ComponentBlocksBlocks = {
   __typename?: 'ComponentBlocksBlocks';
   icon?: Maybe<UploadFileEntityResponse>;
@@ -69,6 +203,112 @@ export type ComponentBlocksBlocksInput = {
   icon?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   perex?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentBlocksCenik = {
+  __typename?: 'ComponentBlocksCenik';
+  button?: Maybe<ComponentButtonButton>;
+  desc?: Maybe<Scalars['String']['output']>;
+  disclaimer?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  price?: Maybe<Scalars['String']['output']>;
+  priceComment?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentBlocksCenikFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksCenikFiltersInput>>>;
+  button?: InputMaybe<ComponentButtonButtonFiltersInput>;
+  desc?: InputMaybe<StringFilterInput>;
+  disclaimer?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentBlocksCenikFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksCenikFiltersInput>>>;
+  price?: InputMaybe<StringFilterInput>;
+  priceComment?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentBlocksCenikInput = {
+  button?: InputMaybe<ComponentButtonButtonInput>;
+  desc?: InputMaybe<Scalars['String']['input']>;
+  disclaimer?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  price?: InputMaybe<Scalars['String']['input']>;
+  priceComment?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentBlocksContactBlocks = {
+  __typename?: 'ComponentBlocksContactBlocks';
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentBlocksFunkce = {
+  __typename?: 'ComponentBlocksFunkce';
+  icon?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID']['output'];
+  image?: Maybe<UploadFileEntityResponse>;
+  perex?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentBlocksFunkceFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksFunkceFiltersInput>>>;
+  not?: InputMaybe<ComponentBlocksFunkceFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksFunkceFiltersInput>>>;
+  perex?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentBlocksFunkceFooter = {
+  __typename?: 'ComponentBlocksFunkceFooter';
+  button?: Maybe<Array<Maybe<ComponentButtonButton>>>;
+  desc?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ComponentBlocksFunkceFooterButtonArgs = {
+  filters?: InputMaybe<ComponentButtonButtonFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentBlocksFunkceFooterInput = {
+  button?: InputMaybe<Array<InputMaybe<ComponentButtonButtonInput>>>;
+  desc?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentBlocksFunkceInput = {
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  image?: InputMaybe<Scalars['ID']['input']>;
+  perex?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentBlogPostSubSection = {
+  __typename?: 'ComponentBlogPostSubSection';
+  desc?: Maybe<Scalars['String']['output']>;
+  id: Scalars['ID']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentBlogPostSubSectionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlogPostSubSectionFiltersInput>>>;
+  desc?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentBlogPostSubSectionFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentBlogPostSubSectionFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentBlogPostSubSectionInput = {
+  desc?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -94,6 +334,66 @@ export type ComponentButtonButtonInput = {
   link?: InputMaybe<Scalars['String']['input']>;
   style?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentButtonFooterLink = {
+  __typename?: 'ComponentButtonFooterLink';
+  id: Scalars['ID']['output'];
+};
+
+export type ComponentFooterLinks = {
+  __typename?: 'ComponentFooterLinks';
+  id: Scalars['ID']['output'];
+  link?: Maybe<Array<Maybe<ComponentButtonButton>>>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ComponentFooterLinksLinkArgs = {
+  filters?: InputMaybe<ComponentButtonButtonFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentFooterLinksFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentFooterLinksFiltersInput>>>;
+  link?: InputMaybe<ComponentButtonButtonFiltersInput>;
+  not?: InputMaybe<ComponentFooterLinksFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentFooterLinksFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentFooterLinksInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  link?: InputMaybe<Array<InputMaybe<ComponentButtonButtonInput>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentFooterSocialSites = {
+  __typename?: 'ComponentFooterSocialSites';
+  icon?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID']['output'];
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentFooterSocialSitesFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentFooterSocialSitesFiltersInput>>>;
+  not?: InputMaybe<ComponentFooterSocialSitesFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentFooterSocialSitesFiltersInput>>>;
+  url?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentFooterSocialSitesInput = {
+  icon?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ComponentInputInput = {
+  __typename?: 'ComponentInputInput';
+  id: Scalars['ID']['output'];
+  placeholder?: Maybe<Scalars['String']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type ComponentSectionSection1 = {
@@ -204,7 +504,116 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = ComponentBlocksBlocks | ComponentButtonButton | ComponentSectionSection1 | ComponentSectionSection2 | Homepage | I18NLocale | Navbar | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type Footer = {
+  __typename?: 'Footer';
+  cornerIcon?: Maybe<UploadFileEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  downloadHere?: Maybe<Scalars['String']['output']>;
+  footerText?: Maybe<Scalars['String']['output']>;
+  links?: Maybe<Array<Maybe<ComponentFooterLinks>>>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<FooterRelationResponseCollection>;
+  logo?: Maybe<UploadFileEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  socialSites?: Maybe<Array<Maybe<ComponentFooterSocialSites>>>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type FooterLinksArgs = {
+  filters?: InputMaybe<ComponentFooterLinksFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type FooterLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type FooterSocialSitesArgs = {
+  filters?: InputMaybe<ComponentFooterSocialSitesFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type FooterEntity = {
+  __typename?: 'FooterEntity';
+  attributes?: Maybe<Footer>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type FooterEntityResponse = {
+  __typename?: 'FooterEntityResponse';
+  data?: Maybe<FooterEntity>;
+};
+
+export type FooterInput = {
+  cornerIcon?: InputMaybe<Scalars['ID']['input']>;
+  downloadHere?: InputMaybe<Scalars['String']['input']>;
+  footerText?: InputMaybe<Scalars['String']['input']>;
+  links?: InputMaybe<Array<InputMaybe<ComponentFooterLinksInput>>>;
+  logo?: InputMaybe<Scalars['ID']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  socialSites?: InputMaybe<Array<InputMaybe<ComponentFooterSocialSitesInput>>>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FooterRelationResponseCollection = {
+  __typename?: 'FooterRelationResponseCollection';
+  data: Array<FooterEntity>;
+};
+
+export type Funkce = {
+  __typename?: 'Funkce';
+  block?: Maybe<Array<Maybe<ComponentBlocksFunkce>>>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  lastBlock?: Maybe<ComponentBlocksFunkceFooter>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<FunkceRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type FunkceBlockArgs = {
+  filters?: InputMaybe<ComponentBlocksFunkceFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type FunkceLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type FunkceEntity = {
+  __typename?: 'FunkceEntity';
+  attributes?: Maybe<Funkce>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type FunkceEntityResponse = {
+  __typename?: 'FunkceEntityResponse';
+  data?: Maybe<FunkceEntity>;
+};
+
+export type FunkceInput = {
+  block?: InputMaybe<Array<InputMaybe<ComponentBlocksFunkceInput>>>;
+  lastBlock?: InputMaybe<ComponentBlocksFunkceFooterInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type FunkceRelationResponseCollection = {
+  __typename?: 'FunkceRelationResponseCollection';
+  data: Array<FunkceEntity>;
+};
+
+export type GenericMorph = BlogPost | Cenik | ComponentAddressLocation | ComponentBlocksBlocks | ComponentBlocksCenik | ComponentBlocksContactBlocks | ComponentBlocksFunkce | ComponentBlocksFunkceFooter | ComponentBlogPostSubSection | ComponentButtonButton | ComponentButtonFooterLink | ComponentFooterLinks | ComponentFooterSocialSites | ComponentInputInput | ComponentSectionSection1 | ComponentSectionSection2 | Footer | Funkce | Homepage | I18NLocale | Kontakt | Navbar | Novinky | Prihlaseni | Registrace | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -355,20 +764,99 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>;
 };
 
+export type Kontakt = {
+  __typename?: 'Kontakt';
+  address?: Maybe<ComponentAddressLocation>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  dic?: Maybe<Scalars['String']['output']>;
+  ico?: Maybe<Scalars['String']['output']>;
+  inputCheckbox?: Maybe<Scalars['String']['output']>;
+  inputCheckboxGDPR?: Maybe<Scalars['String']['output']>;
+  inputEmail?: Maybe<Scalars['String']['output']>;
+  inputName?: Maybe<Scalars['String']['output']>;
+  inputPhone?: Maybe<Scalars['String']['output']>;
+  inputRequest?: Maybe<Scalars['String']['output']>;
+  inputSurname?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<KontaktRelationResponseCollection>;
+  mail?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  submit?: Maybe<ComponentButtonButton>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type KontaktLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type KontaktEntity = {
+  __typename?: 'KontaktEntity';
+  attributes?: Maybe<Kontakt>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type KontaktEntityResponse = {
+  __typename?: 'KontaktEntityResponse';
+  data?: Maybe<KontaktEntity>;
+};
+
+export type KontaktInput = {
+  address?: InputMaybe<ComponentAddressLocationInput>;
+  dic?: InputMaybe<Scalars['String']['input']>;
+  ico?: InputMaybe<Scalars['String']['input']>;
+  inputCheckbox?: InputMaybe<Scalars['String']['input']>;
+  inputCheckboxGDPR?: InputMaybe<Scalars['String']['input']>;
+  inputEmail?: InputMaybe<Scalars['String']['input']>;
+  inputName?: InputMaybe<Scalars['String']['input']>;
+  inputPhone?: InputMaybe<Scalars['String']['input']>;
+  inputRequest?: InputMaybe<Scalars['String']['input']>;
+  inputSurname?: InputMaybe<Scalars['String']['input']>;
+  mail?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  submit?: InputMaybe<ComponentButtonButtonInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type KontaktRelationResponseCollection = {
+  __typename?: 'KontaktRelationResponseCollection';
+  data: Array<KontaktEntity>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createBlogPost?: Maybe<BlogPostEntityResponse>;
+  createBlogPostLocalization?: Maybe<BlogPostEntityResponse>;
+  createCenikLocalization?: Maybe<CenikEntityResponse>;
+  createFooterLocalization?: Maybe<FooterEntityResponse>;
+  createFunkceLocalization?: Maybe<FunkceEntityResponse>;
   createHomepageLocalization?: Maybe<HomepageEntityResponse>;
+  createKontaktLocalization?: Maybe<KontaktEntityResponse>;
   createNavbarLocalization?: Maybe<NavbarEntityResponse>;
+  createNovinkyLocalization?: Maybe<NovinkyEntityResponse>;
+  createPrihlaseniLocalization?: Maybe<PrihlaseniEntityResponse>;
+  createRegistraceLocalization?: Maybe<RegistraceEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteBlogPost?: Maybe<BlogPostEntityResponse>;
+  deleteCenik?: Maybe<CenikEntityResponse>;
+  deleteFooter?: Maybe<FooterEntityResponse>;
+  deleteFunkce?: Maybe<FunkceEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
+  deleteKontakt?: Maybe<KontaktEntityResponse>;
   deleteNavbar?: Maybe<NavbarEntityResponse>;
+  deleteNovinky?: Maybe<NovinkyEntityResponse>;
+  deletePrihlaseni?: Maybe<PrihlaseniEntityResponse>;
+  deleteRegistrace?: Maybe<RegistraceEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -386,9 +874,17 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateBlogPost?: Maybe<BlogPostEntityResponse>;
+  updateCenik?: Maybe<CenikEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateFooter?: Maybe<FooterEntityResponse>;
+  updateFunkce?: Maybe<FunkceEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
+  updateKontakt?: Maybe<KontaktEntityResponse>;
   updateNavbar?: Maybe<NavbarEntityResponse>;
+  updateNovinky?: Maybe<NovinkyEntityResponse>;
+  updatePrihlaseni?: Maybe<PrihlaseniEntityResponse>;
+  updateRegistrace?: Maybe<RegistraceEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -406,6 +902,40 @@ export type MutationChangePasswordArgs = {
 };
 
 
+export type MutationCreateBlogPostArgs = {
+  data: BlogPostInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateBlogPostLocalizationArgs = {
+  data?: InputMaybe<BlogPostInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateCenikLocalizationArgs = {
+  data?: InputMaybe<CenikInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateFooterLocalizationArgs = {
+  data?: InputMaybe<FooterInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateFunkceLocalizationArgs = {
+  data?: InputMaybe<FunkceInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationCreateHomepageLocalizationArgs = {
   data?: InputMaybe<HomepageInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
@@ -413,8 +943,36 @@ export type MutationCreateHomepageLocalizationArgs = {
 };
 
 
+export type MutationCreateKontaktLocalizationArgs = {
+  data?: InputMaybe<KontaktInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationCreateNavbarLocalizationArgs = {
   data?: InputMaybe<NavbarInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateNovinkyLocalizationArgs = {
+  data?: InputMaybe<NovinkyInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreatePrihlaseniLocalizationArgs = {
+  data?: InputMaybe<PrihlaseniInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateRegistraceLocalizationArgs = {
+  data?: InputMaybe<RegistraceInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
@@ -440,12 +998,53 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
+export type MutationDeleteBlogPostArgs = {
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteCenikArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteFooterArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteFunkceArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationDeleteHomepageArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
+export type MutationDeleteKontaktArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationDeleteNavbarArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteNovinkyArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeletePrihlaseniArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteRegistraceArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
@@ -510,9 +1109,34 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateBlogPostArgs = {
+  data: BlogPostInput;
+  id: Scalars['ID']['input'];
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdateCenikArgs = {
+  data: CenikInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID']['input'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateFooterArgs = {
+  data: FooterInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdateFunkceArgs = {
+  data: FunkceInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
 
@@ -522,8 +1146,32 @@ export type MutationUpdateHomepageArgs = {
 };
 
 
+export type MutationUpdateKontaktArgs = {
+  data: KontaktInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
 export type MutationUpdateNavbarArgs = {
   data: NavbarInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdateNovinkyArgs = {
+  data: NovinkyInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdatePrihlaseniArgs = {
+  data: PrihlaseniInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdateRegistraceArgs = {
+  data: RegistraceInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
@@ -605,6 +1253,44 @@ export type NavbarRelationResponseCollection = {
   data: Array<NavbarEntity>;
 };
 
+export type Novinky = {
+  __typename?: 'Novinky';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<NovinkyRelationResponseCollection>;
+  nextButton?: Maybe<ComponentButtonButton>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type NovinkyLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type NovinkyEntity = {
+  __typename?: 'NovinkyEntity';
+  attributes?: Maybe<Novinky>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type NovinkyEntityResponse = {
+  __typename?: 'NovinkyEntityResponse';
+  data?: Maybe<NovinkyEntity>;
+};
+
+export type NovinkyInput = {
+  nextButton?: InputMaybe<ComponentButtonButtonInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NovinkyRelationResponseCollection = {
+  __typename?: 'NovinkyRelationResponseCollection';
+  data: Array<NovinkyEntity>;
+};
+
 export type Pagination = {
   __typename?: 'Pagination';
   page: Scalars['Int']['output'];
@@ -620,6 +1306,54 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type Prihlaseni = {
+  __typename?: 'Prihlaseni';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  dontHaveAccountYet?: Maybe<Scalars['String']['output']>;
+  forgottenPassword?: Maybe<Scalars['String']['output']>;
+  inputName?: Maybe<Scalars['String']['output']>;
+  inputPassword?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<PrihlaseniRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  registrationButton?: Maybe<ComponentButtonButton>;
+  signUpButton?: Maybe<ComponentButtonButton>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type PrihlaseniLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type PrihlaseniEntity = {
+  __typename?: 'PrihlaseniEntity';
+  attributes?: Maybe<Prihlaseni>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type PrihlaseniEntityResponse = {
+  __typename?: 'PrihlaseniEntityResponse';
+  data?: Maybe<PrihlaseniEntity>;
+};
+
+export type PrihlaseniInput = {
+  dontHaveAccountYet?: InputMaybe<Scalars['String']['input']>;
+  forgottenPassword?: InputMaybe<Scalars['String']['input']>;
+  inputName?: InputMaybe<Scalars['String']['input']>;
+  inputPassword?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  registrationButton?: InputMaybe<ComponentButtonButtonInput>;
+  signUpButton?: InputMaybe<ComponentButtonButtonInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PrihlaseniRelationResponseCollection = {
+  __typename?: 'PrihlaseniRelationResponseCollection';
+  data: Array<PrihlaseniEntity>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -627,11 +1361,20 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  blogPost?: Maybe<BlogPostEntityResponse>;
+  blogPosts?: Maybe<BlogPostEntityResponseCollection>;
+  cenik?: Maybe<CenikEntityResponse>;
+  footer?: Maybe<FooterEntityResponse>;
+  funkce?: Maybe<FunkceEntityResponse>;
   homepage?: Maybe<HomepageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
+  kontakt?: Maybe<KontaktEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
   navbar?: Maybe<NavbarEntityResponse>;
+  novinky?: Maybe<NovinkyEntityResponse>;
+  prihlaseni?: Maybe<PrihlaseniEntityResponse>;
+  registrace?: Maybe<RegistraceEntityResponse>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -640,6 +1383,39 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryBlogPostArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type QueryBlogPostsArgs = {
+  filters?: InputMaybe<BlogPostFiltersInput>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryCenikArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryFooterArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryFunkceArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -661,7 +1437,31 @@ export type QueryI18NLocalesArgs = {
 };
 
 
+export type QueryKontaktArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
 export type QueryNavbarArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryNovinkyArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryPrihlaseniArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryRegistraceArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   publicationState?: InputMaybe<PublicationState>;
 };
@@ -712,6 +1512,64 @@ export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type Registrace = {
+  __typename?: 'Registrace';
+  checkbox2GdprContract?: Maybe<Scalars['String']['output']>;
+  checkboxAndSuffix?: Maybe<Scalars['String']['output']>;
+  checkboxGdprSuffix?: Maybe<Scalars['String']['output']>;
+  checkboxVsopSuffix?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  gdprContractSuffix?: Maybe<Scalars['String']['output']>;
+  inputCheckbox?: Maybe<Scalars['String']['output']>;
+  inputCompanyName?: Maybe<Scalars['String']['output']>;
+  inputDic?: Maybe<Scalars['String']['output']>;
+  inputIco?: Maybe<Scalars['String']['output']>;
+  inputTelefon?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<RegistraceRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  register?: Maybe<ComponentButtonButton>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type RegistraceLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type RegistraceEntity = {
+  __typename?: 'RegistraceEntity';
+  attributes?: Maybe<Registrace>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type RegistraceEntityResponse = {
+  __typename?: 'RegistraceEntityResponse';
+  data?: Maybe<RegistraceEntity>;
+};
+
+export type RegistraceInput = {
+  checkbox2GdprContract?: InputMaybe<Scalars['String']['input']>;
+  checkboxAndSuffix?: InputMaybe<Scalars['String']['input']>;
+  checkboxGdprSuffix?: InputMaybe<Scalars['String']['input']>;
+  checkboxVsopSuffix?: InputMaybe<Scalars['String']['input']>;
+  gdprContractSuffix?: InputMaybe<Scalars['String']['input']>;
+  inputCheckbox?: InputMaybe<Scalars['String']['input']>;
+  inputCompanyName?: InputMaybe<Scalars['String']['input']>;
+  inputDic?: InputMaybe<Scalars['String']['input']>;
+  inputIco?: InputMaybe<Scalars['String']['input']>;
+  inputTelefon?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  register?: InputMaybe<ComponentButtonButtonInput>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RegistraceRelationResponseCollection = {
+  __typename?: 'RegistraceRelationResponseCollection';
+  data: Array<RegistraceEntity>;
 };
 
 export type ResponseCollectionMeta = {
@@ -1116,13 +1974,3 @@ export type UsersPermissionsUserRelationResponseCollection = {
   __typename?: 'UsersPermissionsUserRelationResponseCollection';
   data: Array<UsersPermissionsUserEntity>;
 };
-
-export type NavbarQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
-}>;
-
-
-export type NavbarQuery = { __typename?: 'Query', navbar?: { __typename?: 'NavbarEntityResponse', data?: { __typename?: 'NavbarEntity', attributes?: { __typename?: 'Navbar', logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null, width?: number | null, height?: number | null } | null } | null } | null, navButton?: Array<{ __typename?: 'ComponentButtonButton', title?: string | null, link?: string | null, style?: string | null } | null> | null } | null } | null } | null };
-
-
-export const NavbarDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Navbar"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"locale"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"I18NLocaleCode"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"navbar"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"locale"},"value":{"kind":"Variable","name":{"kind":"Name","value":"locale"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"navButton"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"link"}},{"kind":"Field","name":{"kind":"Name","value":"style"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<NavbarQuery, NavbarQueryVariables>;

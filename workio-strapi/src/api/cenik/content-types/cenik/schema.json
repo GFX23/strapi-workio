@@ -1,0 +1,55 @@
+{
+  "kind": "singleType",
+  "collectionName": "ceniks",
+  "info": {
+    "singularName": "cenik",
+    "pluralName": "ceniks",
+    "displayName": "Ceník",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "subTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "perex": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cenikBlock": {
+      "displayName": "cenik",
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.cenik",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

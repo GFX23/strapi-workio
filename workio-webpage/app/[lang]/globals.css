@@ -10,61 +10,56 @@
     font-size: 45px;
     font-weight: 400;
     line-height: 54px;
-    text-align: left;
   }
   .h1-bold {
     font-size: 39px;
     font-weight: 600;
     line-height: 46.8px;
-    text-align: left;
   }
   .h2 {
     font-size: 28px;
     font-weight: 400;
     line-height: 33px;
-    text-align: left;
   }
   .h2-bold {
     font-size: 28px;
     font-weight: 600;
     line-height: 33px;
-    text-align: left;
   }
   .h3 {
     font-size: 20px;
     font-weight: 400;
     line-height: 24px;
-    text-align: left;
   }
   .h3-bold {
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
-    text-align: left;
   }
   .p {
     font-size: 16px;
     font-weight: 400;
     line-height: 27px;
-    text-align: left;
   }
   .p-bold {
     font-size: 16px;
     font-weight: 600;
     line-height: 27px;
-    text-align: left;
   }
     .p-small {
     font-size: 14px;
     font-weight: 400;
+    line-height: 22px;
+  }
+      .p-footer {
+    font-size: 14px;
+    font-weight: 200;
     line-height: 20px;
-    text-align: left;
   }
   .p-small-bold {
     font-size: 14px;
     font-weight: 600;
-    line-height: 20px;
-    text-align: left;
+    line-height: 22px;
   }
 }
 

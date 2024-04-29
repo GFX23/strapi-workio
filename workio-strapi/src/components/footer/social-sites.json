@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_footer_social_sites",
+  "info": {
+    "displayName": "socialSites"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

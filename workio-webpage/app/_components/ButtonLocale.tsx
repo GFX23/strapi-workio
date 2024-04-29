@@ -11,8 +11,6 @@ export const ButtonLocale: React.FC = () => {
   const [selectedLocale, setSelectedLocale] = useState<"cs" | "en">(params.lang as "cs" | "en");
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(params)
-
   const flags = {
     cs: "🇨🇿",
     en: "🇬🇧",

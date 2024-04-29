@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blog_post_sub_sections",
+  "info": {
+    "displayName": "subSection"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "novinkies",
+  "info": {
+    "singularName": "novinky",
+    "pluralName": "novinkies",
+    "displayName": "novinky",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "nextButton": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.button",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

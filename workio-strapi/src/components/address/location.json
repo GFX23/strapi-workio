@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_address_locations",
+  "info": {
+    "displayName": "location",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "googleUrl": {
+      "type": "string"
+    }
+  }
+}

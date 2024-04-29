@@ -4,27 +4,20 @@ const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:3001",
   "http://localhost:3002",
+  "http://127.0.0.1",
+  'https://studio.apollographql.com'
 ];
 
 
 export default [
   'strapi::logger',
   'strapi::errors',
-  {
-    name: "strapi::security",
-    config: {
-      contentSecurityPolicy: {
-        directives: {
-          "frame-src": [ "http://localhost:*", "self", "sandbox.embed.apollographql.com" ],
-        },
-      },
-    },
-  },
+  'strapi::security',
   {
     name: "strapi::cors",
     config: {
       origin: allowedOrigins,
-      headers: ["Content-Type", "Authorization", "Cache"],
+      headers: ["Content-Type", "Authorization", "Cache", "access-control-allow-origin"],
     },
   },
   {
