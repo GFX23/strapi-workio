@@ -20,11 +20,13 @@ const config: Config = {
           50: "#EFF6FF",
           100: "#E5F0FF",
           200: "#C2DAFF",
+          300: "#8FBCFF",
           500: "#297FFF",
         },
         "wyellow": {
           100: "#FFEDAE",
           300: "#FEE17B",
+          400: "#FFD500",
           500: "#EFBA00",
         },
         "wred": {
@@ -33,6 +35,7 @@ const config: Config = {
           500: "#FC2F5C",
         },
         "wblack": {
+          50: "#707070",
           100: "#576784",
         },
       },

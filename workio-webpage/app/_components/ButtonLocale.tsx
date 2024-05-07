@@ -3,67 +3,69 @@
 import { useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import cs from "classnames";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import Image from "next/image";
+
+const locales = ["cs", "en", "sk"];
+
+type localesT = "cs" | "sk" | "en";
 
 export const ButtonLocale: React.FC = () => {
   const router = useRouter();
   const params = useParams();
-  const [selectedLocale, setSelectedLocale] = useState<"cs" | "en">(params.lang as "cs" | "en");
+  const pathName = usePathname();
+
+  console.log(pathName)
+  const [selectedLocale, setSelectedLocale] = useState<localesT>(
+    params.lang as localesT
+  );
   const [isOpen, setIsOpen] = useState(false);
 
-  const flags = {
-    cs: "🇨🇿",
-    en: "🇬🇧",
+  enum flags {
+    cs = "/flags/CZ.svg",
+    en = "/flags/EN.svg",
+    sk = "/flags/SK.svg",
   };
 
-  const titles = {
-    cs: "Čeština",
-    en: "English",
+  enum titles {
+    cs = "Čeština",
+    en = "English",
+    sk = "Slovenčina",
   };
 
-  const handleChangeLocale = (locale: "cs" | "en") => {
+
+  const handleChangeLocale = (locale: localesT) => {
     setSelectedLocale(locale);
-    setIsOpen(false);   
-    router.push(locale)
-  }
-
+    setIsOpen(false);
+    router.push(`/${locale}${pathName.replace(`/${selectedLocale}`, "")}`);
+  };
 
   return (
     <div className="relative flex">
       <button
-        onClick={() => setIsOpen(isOpen => !isOpen)}
+        onClick={() => setIsOpen((isOpen) => !isOpen)}
         className="flex gap-2 items-center justify-center"
       >
-        <p>{flags[selectedLocale]}</p>
+        <Image src={flags[selectedLocale]} alt={titles[selectedLocale]} width={20} height={20} />
         <p>{titles[selectedLocale]}</p>
         <BiChevronDown />
       </button>
       {isOpen && (
-        <div className="flex flex-col items-center justify-center absolute left-0 top-14 bg-white py-2 border-wblue-500 border-[1px] rounded-lg">
-          <div
-            className={cs(
-              "flex gap-2 p-2 hover:bg-wblue-200",
-              selectedLocale === "cs" && "bg-wblue-100"
-            )}
-            onClick={() => {
-              handleChangeLocale("cs"); 
-            }}
-          >
-            <p>{flags["cs"]}</p>
-            <p>{titles["cs"]}</p>
-          </div>
-          <div
-            className={cs(
-              "flex gap-2 p-2 hover:bg-wblue-200",
-              selectedLocale === "en" && "bg-wblue-100"
-            )}
-            onClick={() => {
-              handleChangeLocale("en");
-            }}
-          >
-            <p>{flags["en"]}</p>
-            <p>{titles["en"]}</p>
-          </div>
+        <div className="flex flex-col items-center justify-center absolute left-0 top-14 bg-wblue-50 py-2 border-wblue-500 border-[1px] rounded-lg">
+          {locales.map((locale: string) => ( // Update the type of the locale parameter to string
+            <div
+              className={cs(
+                "flex gap-2 p-2 hover:bg-wblue-300 w-36",
+                selectedLocale === locale && "bg-wblue-200"
+              )}
+              onClick={() => {
+                handleChangeLocale(locale as localesT); // Cast locale to localesT
+              }}
+            >
+              <Image src={flags[locale as keyof typeof flags]} alt={titles[selectedLocale]} width={20} height={20} />
+              <p>{titles[locale as keyof typeof titles]}</p>
+            </div>
+          ))}
         </div>
       )}
     </div>

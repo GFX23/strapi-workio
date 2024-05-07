@@ -53,11 +53,13 @@ export interface BlocksFunkceFooter extends Schema.Component {
   collectionName: 'components_blocks_funkce_footers';
   info: {
     displayName: 'funkce-footer';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     desc: Attribute.String;
     button: Attribute.Component<'button.button', true>;
+    image: Attribute.Media;
   };
 }
 
@@ -142,12 +144,14 @@ export interface SectionSection1 extends Schema.Component {
   collectionName: 'components_section_section_1s';
   info: {
     displayName: 'section-1';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     perex: Attribute.String;
     linkButton: Attribute.Component<'button.button', true>;
     picture: Attribute.Media;
+    buble_picture: Attribute.Media;
   };
 }
 

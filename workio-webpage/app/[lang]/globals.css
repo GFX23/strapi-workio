@@ -2,10 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.news-carousel ul.slick-dots {
+  @apply m-0 flex max-w-[80px] left-[50%] pt-2 -translate-x-[60%] justify-between !important;
+}
+
+.news-carousel ul.slick-dots li {
+  @apply w-2 h-2 mt-2 p-0  rounded-full bg-wblue-50;
+}
+
+.news-carousel ul.slick-dots li button {
+  @apply hidden;
+}
+
+.news-carousel ul.slick-dots li.slick-active {
+  @apply bg-wblue-500 rounded-full;
+}
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
   .h1 {
     font-size: 45px;
     font-weight: 400;

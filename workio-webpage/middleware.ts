@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server";
 
-let locales = ["en", "cs"];
+const locales = ["en", "cs", "sk"];
 
 const PUBLIC_FILE = /\.(.*)$/
 

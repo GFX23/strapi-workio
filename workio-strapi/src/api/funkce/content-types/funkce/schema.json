@@ -4,7 +4,8 @@
   "info": {
     "singularName": "funkce",
     "pluralName": "funkces",
-    "displayName": "funkce"
+    "displayName": "funkce",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

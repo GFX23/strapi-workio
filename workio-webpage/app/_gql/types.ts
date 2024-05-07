@@ -266,6 +266,7 @@ export type ComponentBlocksFunkceFooter = {
   button?: Maybe<Array<Maybe<ComponentButtonButton>>>;
   desc?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
+  image?: Maybe<UploadFileEntityResponse>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
@@ -280,6 +281,7 @@ export type ComponentBlocksFunkceFooterInput = {
   button?: InputMaybe<Array<InputMaybe<ComponentButtonButtonInput>>>;
   desc?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
+  image?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -398,6 +400,7 @@ export type ComponentInputInput = {
 
 export type ComponentSectionSection1 = {
   __typename?: 'ComponentSectionSection1';
+  buble_picture?: Maybe<UploadFileEntityResponse>;
   id: Scalars['ID']['output'];
   linkButton?: Maybe<Array<Maybe<ComponentButtonButton>>>;
   perex?: Maybe<Scalars['String']['output']>;
@@ -413,6 +416,7 @@ export type ComponentSectionSection1LinkButtonArgs = {
 };
 
 export type ComponentSectionSection1Input = {
+  buble_picture?: InputMaybe<Scalars['ID']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   linkButton?: InputMaybe<Array<InputMaybe<ComponentButtonButtonInput>>>;
   perex?: InputMaybe<Scalars['String']['input']>;
@@ -769,6 +773,8 @@ export type Kontakt = {
   address?: Maybe<ComponentAddressLocation>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   dic?: Maybe<Scalars['String']['output']>;
+  formFailed?: Maybe<Scalars['String']['output']>;
+  formSuccess?: Maybe<Scalars['String']['output']>;
   ico?: Maybe<Scalars['String']['output']>;
   inputCheckbox?: Maybe<Scalars['String']['output']>;
   inputCheckboxGDPR?: Maybe<Scalars['String']['output']>;
@@ -806,6 +812,8 @@ export type KontaktEntityResponse = {
 export type KontaktInput = {
   address?: InputMaybe<ComponentAddressLocationInput>;
   dic?: InputMaybe<Scalars['String']['input']>;
+  formFailed?: InputMaybe<Scalars['String']['input']>;
+  formSuccess?: InputMaybe<Scalars['String']['input']>;
   ico?: InputMaybe<Scalars['String']['input']>;
   inputCheckbox?: InputMaybe<Scalars['String']['input']>;
   inputCheckboxGDPR?: InputMaybe<Scalars['String']['input']>;
@@ -1214,6 +1222,7 @@ export type Navbar = {
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<NavbarRelationResponseCollection>;
   logo?: Maybe<UploadFileEntityResponse>;
+  mobileLogo?: Maybe<UploadFileEntityResponse>;
   navButton?: Maybe<Array<Maybe<ComponentButtonButton>>>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1244,6 +1253,7 @@ export type NavbarEntityResponse = {
 
 export type NavbarInput = {
   logo?: InputMaybe<Scalars['ID']['input']>;
+  mobileLogo?: InputMaybe<Scalars['ID']['input']>;
   navButton?: InputMaybe<Array<InputMaybe<ComponentButtonButtonInput>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -1260,6 +1270,7 @@ export type Novinky = {
   localizations?: Maybe<NovinkyRelationResponseCollection>;
   nextButton?: Maybe<ComponentButtonButton>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  readTitle?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -1283,6 +1294,7 @@ export type NovinkyEntityResponse = {
 export type NovinkyInput = {
   nextButton?: InputMaybe<ComponentButtonButtonInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  readTitle?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 

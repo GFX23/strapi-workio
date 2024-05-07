@@ -36,6 +36,16 @@ query($locale: I18NLocaleCode)  {
               }
             }
           }
+          buble_picture {
+            data {
+              attributes {
+                url
+                width
+                height
+                alternativeText
+              }
+            }
+          }
         }
         section2 {
           id
@@ -185,6 +195,16 @@ export const navbarData = gql`
                 }
               }
             }
+            mobileLogo {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                  width
+                  height
+                }
+              }
+            }
             navButton {
               title
               link
@@ -201,6 +221,8 @@ query ($locale: I18NLocaleCode) {
   kontakt(locale: $locale) {
     data {
       attributes {
+        formFailed
+        formSuccess
         title
         submit {
           id
@@ -228,6 +250,229 @@ query ($locale: I18NLocaleCode) {
         createdAt
         updatedAt
         publishedAt
+      }
+    }
+  }
+}`
+
+export const funkceData = gql`
+query ($locale: I18NLocaleCode) {
+  funkce(locale: $locale) {
+    data {
+      attributes {
+        block {
+          id
+          title
+          perex
+          icon {
+            data {
+              id
+              attributes {
+                alternativeText
+                caption
+                width
+                height
+                formats
+                hash
+                ext
+                url
+                createdAt
+              }
+            }
+          }
+          image {
+            data {
+              attributes {
+                url
+                width
+                height
+                alternativeText
+              }
+            }
+          }
+        }
+        title
+        lastBlock {
+          id
+          title
+          desc
+          button {
+            id
+            title
+            style
+            link
+          }
+          image {
+            data {
+              attributes {
+                url
+                height
+                width
+                alternativeText
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}`
+
+export const cenikData = gql`
+query ($locale: I18NLocaleCode) {
+  cenik(locale: $locale) {
+    data {
+      attributes {
+        title
+        subTitle
+        perex
+        cenikBlock {
+          id
+          title
+          desc
+          price
+          priceComment
+          button {
+            id
+            title
+            style
+            link
+          }
+          disclaimer
+        }
+      }
+    }
+  }
+}`
+
+export const newsData = gql`
+query ($locale: I18NLocaleCode, $blogPostsLocale2: I18NLocaleCode, $pagination: PaginationArg) {
+  novinky(locale: $locale) {
+    data {
+      attributes {
+        title
+        readTitle
+        nextButton {
+          id
+          title
+          style
+          link
+        }
+      }
+    }
+  }
+  blogPosts(locale: $blogPostsLocale2, pagination: $pagination) {
+    data {
+      attributes {
+        image {
+          data {
+            attributes {
+              width
+              url
+              height
+              alternativeText
+            }
+          }
+        }
+        perex
+        title
+        subSection {
+          desc
+          title
+        }
+        createdAt
+      }
+      id
+    }
+  }
+}`
+
+export const getTotalBlogs = gql`
+query ( $locale: I18NLocaleCode,) {
+  blogPosts(locale: $locale, pagination: {limit: 1000}) {
+    data {
+      id
+    }
+  }
+}`
+
+export const getBlog = gql`
+query ($blogPostId: ID) {
+  blogPost(id: $blogPostId) {
+    data {
+      attributes {
+        image {
+          data {
+            attributes {
+              width
+              url
+              alternativeText
+              height
+            }
+          }
+        }
+        perex
+        createdAt
+        title
+        subSection {
+          desc
+          id
+          title
+        }
+      }
+    }
+  }
+}`
+
+export const loginData = gql`
+query ($locale: I18NLocaleCode) {
+  prihlaseni(locale: $locale) {
+    data {
+      attributes {
+        dontHaveAccountYet
+        forgottenPassword
+        inputName
+        inputPassword
+        registrationButton {
+          id
+          title
+          style
+          link
+        }
+        signUpButton {
+          id
+          title
+          style
+          link
+        }
+        title
+      }
+    }
+  }
+}`
+
+export const registerData = gql`
+query ($locale: I18NLocaleCode) {
+  registrace(locale: $locale) {
+    data {
+      attributes {
+        checkbox2GdprContract
+        checkboxAndSuffix
+        checkboxGdprSuffix
+        checkboxVsopSuffix
+        gdprContractSuffix
+        inputCheckbox
+        inputCompanyName
+        inputDic
+        inputIco
+        inputTelefon
+        register {
+          id
+          title
+          style
+          link
+        }
+        title
       }
     }
   }

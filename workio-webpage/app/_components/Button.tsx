@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { BiRightArrowAlt } from "react-icons/bi";
+import cs from "classnames";
 
 
 export enum ButtonStyles {
@@ -15,6 +15,7 @@ type Props = {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   style: ButtonStyles;
+  size?: "small" | "medium" | "large";
 };
 
 export const buttonStyles = {
@@ -25,10 +26,24 @@ export const buttonStyles = {
   "navlink-red": "link text-wred-500"
 };
 
-export const Button: React.FC<Props> = ({label = "Popisek", onClick, type, style = "solid"}) => {
+export const sizes = {
+  small: "py-2.5",
+  medium: "py-3.5",
+  large: "py-5",
+};
+
+export const Button: React.FC<Props> = ({label = "Popisek", onClick, type, style = "solid", size = "medium"}) => {
   const arrow = style === "solid" || style === "outline" ? true : false;
   return (
-    <button onClick={onClick} type={type} className={buttonStyles[style as keyof typeof buttonStyles]}>
+    <button
+      onClick={onClick}
+      type={type}
+      aria-label={label}
+      className={cs(
+        buttonStyles[style as keyof typeof buttonStyles],
+        sizes[size as keyof typeof sizes]
+      )}
+    >
       <p>{label}</p>
       {arrow && <BiRightArrowAlt />}
     </button>

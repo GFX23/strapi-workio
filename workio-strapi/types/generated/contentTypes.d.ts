@@ -1014,6 +1014,7 @@ export interface ApiFunkceFunkce extends Schema.SingleType {
     singularName: 'funkce';
     pluralName: 'funkces';
     displayName: 'funkce';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1220,6 +1221,18 @@ export interface ApiKontaktKontakt extends Schema.SingleType {
           localized: true;
         };
       }>;
+    formSuccess: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formFailed: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1250,6 +1263,7 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
     singularName: 'navbar';
     pluralName: 'navbars';
     displayName: 'Navbar';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1267,6 +1281,12 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
         };
       }>;
     navButton: Attribute.Component<'button.button', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mobileLogo: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1320,6 +1340,12 @@ export interface ApiNovinkyNovinky extends Schema.SingleType {
         };
       }>;
     nextButton: Attribute.Component<'button.button'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    readTitle: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
