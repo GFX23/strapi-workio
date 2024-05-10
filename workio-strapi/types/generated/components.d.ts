@@ -80,10 +80,12 @@ export interface BlogPostSubSection extends Schema.Component {
   collectionName: 'components_blog_post_sub_sections';
   info: {
     displayName: 'subSection';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     desc: Attribute.Text;
+    desc1: Attribute.Blocks;
   };
 }
 

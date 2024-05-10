@@ -5,6 +5,7 @@ import { ImageW } from "./ImageW";
 import Image from "next/image";
 import { ButtonLink, ButtonStyles } from "./ButtonLink";
 import Link from "next/link";
+import { siteConfig } from "../../siteConfig";
 
 type Props = {
   locale: "cs" | "en";
@@ -24,6 +25,8 @@ export const Footer: React.FC<Props> = async ({ locale }) => {
     socialSites,
     footerText,
     cornerIcon,
+    appStoreLink,
+    googlePlayLink,
   } = r.data.footer.data.attributes as FooterType;
 
   return (
@@ -37,20 +40,26 @@ export const Footer: React.FC<Props> = async ({ locale }) => {
             </div>
             <p className="p-bold text-white pt-4">{downloadHere}</p>
             <div className="flex gap-6 pt-3 flex-col xl:flex-row">
+              <Link href={appStoreLink ?? ""} target="_blank">
               <Image
                 src="/download-icons/appstore-cs.png"
                 alt="appstore"
-                style={{width: "auto"}}
-                width={138}
+                style={{ width: "auto" }}
+                sizes="250px"
+                width={0}
                 height={46}
               />
+              </Link>
+              <Link href={googlePlayLink ?? ""} target="_blank">
               <Image
                 src="/download-icons/google-cs.png"
                 alt="googleplay"
-                style={{width: "auto"}}
-                width={155}
+                style={{ width: "auto" }}
+                sizes="250px"
+                width={0}
                 height={46}
               />
+              </Link>
             </div>
           </div>
           <div className="flex md:gap-5 gap-7 md:flex-row flex-col items-center md:items-start">
@@ -61,11 +70,11 @@ export const Footer: React.FC<Props> = async ({ locale }) => {
               >
                 <p className="p-bold text-white">{link?.title}</p>
                 <div className="flex flex-col items-center md:items-start">
-                  {link?.link?.map((l, idx) => (
+                  {link?.link?.map((l, indx) => (
                     <ButtonLink
-                      key={idx}
+                      key={indx}
                       label={l?.title || ""}
-                      link={l?.link || ""}
+                      link={idx === 1 ? siteConfig.strapiUrl! + l?.link : l?.link ?? ""}
                       size="small"
                       styles={l?.style as ButtonStyles}
                     />
@@ -76,11 +85,8 @@ export const Footer: React.FC<Props> = async ({ locale }) => {
           </div>
           <div className="flex gap-3">
             {socialSites?.map((social, idx) => (
-              <Link href={social?.url || ""}>
-                <ImageW
-                  key={idx}
-                  data={social?.icon?.data?.attributes as UploadFile}
-                />
+              <Link href={social?.url || ""} target="_blank" key={idx}>
+                <ImageW data={social?.icon?.data?.attributes as UploadFile} />
               </Link>
             ))}
           </div>

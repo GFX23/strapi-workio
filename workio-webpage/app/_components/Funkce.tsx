@@ -22,7 +22,7 @@ export const Funkce: React.FC<Props> = async ({ locale }) => {
   return (
     <div
       id="product"
-      className="flex relative xl:max-w-[1200px] flex-col xl:items-start items-center w-full xl:px-0 px-4 pt-6 z-10 mb-10"
+      className="flex relative xl:max-w-[1200px] flex-col xl:items-start items-center w-full xl:px-0 px-4 pt-6 z-10"
     >
       <div className="absolute w-[200vw] h-[660px] xl:-right-[480px] -right-[80px] bg-white top-0 -z-10 xl:rounded-tr-[650px] rounded-tr-[214px]"></div>
       <div className="absolute hidden xl:flex w-[1329px] h-[1329px] -right-[450px] bg-white top-0 -z-10 rounded-full bg-gradient-to-b from-white via-white to-wred-100 opacity-70"></div>
@@ -157,8 +157,9 @@ export const Funkce: React.FC<Props> = async ({ locale }) => {
               <p className="p">{lastBlock?.desc}</p>
             </div>
             <div className="flex xl:flex-row flex-col xl:gap-0 gap-5 w-fit justify-between xl:w-full py-10 xl:pt-[45px]">
-              {lastBlock?.button?.map((b) => (
+              {lastBlock?.button?.map((b, idx) => (
                 <ButtonLink
+                  key={idx}
                   label={b?.title || ""}
                   styles={b?.style as ButtonStyles}
                   size={"large"}

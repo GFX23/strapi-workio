@@ -116,6 +116,8 @@ query ($locale: I18NLocaleCode){
     data {
       id
       attributes {
+        appStoreLink
+        googlePlayLink
         logo {
           data {
             id
@@ -433,6 +435,7 @@ query ($locale: I18NLocaleCode) {
         forgottenPassword
         inputName
         inputPassword
+        invalidCredentials
         registrationButton {
           id
           title
@@ -466,6 +469,19 @@ query ($locale: I18NLocaleCode) {
         inputDic
         inputIco
         inputTelefon
+        inputEmail
+        inputFirstName
+        inputLastName
+        inputPassword
+        inputPasswordConfirmation
+        userDataLabel
+        registerFailedPasswordDoNotMatch
+        registerFailedValidation
+        registerSuccess
+        registerFailedOnRegister
+        linkGDPR
+        linkVOP
+        linkGDPRContract
         register {
           id
           title
@@ -473,6 +489,31 @@ query ($locale: I18NLocaleCode) {
           link
         }
         title
+      }
+    }
+  }
+}`
+
+export const password = gql`
+query($locale: I18NLocaleCode) {
+  heslo(locale: $locale) {
+    data {
+      attributes {
+        inputEmail
+        submit
+        title
+        image {
+          data {
+            attributes {
+              url
+              width
+              height
+              alternativeText
+            }
+          }
+        }
+        formSuccess
+        formFailed
       }
     }
   }

@@ -12,7 +12,7 @@ import { SectionBlocks } from "../_components/SectionBlocks";
 import { Funkce } from "../_components/Funkce";
 import { Cenik } from "../_components/Cenik";
 import { News } from "../_components/News";
-import { Contact } from "@/_containers/Contact";
+import { Contact } from "@/_components/Contact";
 
 type Props = {
   params: { [lang: string]: string };
@@ -37,7 +37,7 @@ const Home: NextPage<Props> = async ({ params: { lang } }) => {
       <Cenik locale={lang} />
       <News locale={lang} />
       <div className="w-full flex px-4 justify-center">
-      <Contact locale={lang} />
+        <Contact locale={lang} />
       </div>
     </main>
   );

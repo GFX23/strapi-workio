@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "blog_posts",
+  "kind": "singleType",
+  "collectionName": "heslos",
   "info": {
-    "singularName": "blog-post",
-    "pluralName": "blog-posts",
-    "displayName": "blogPost",
+    "singularName": "heslo",
+    "pluralName": "heslos",
+    "displayName": "Heslo",
     "description": ""
   },
   "options": {
@@ -17,56 +17,59 @@
   },
   "attributes": {
     "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "type": "string",
-      "required": true
-    },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
     },
-    "created": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
+    "inputEmail": {
       "type": "string",
-      "required": true
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
-    "perex": {
+    "submit": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "formSuccess": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text"
+      "type": "string"
     },
-    "subSection": {
-      "type": "component",
-      "repeatable": true,
+    "formFailed": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "blog-post.sub-section"
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

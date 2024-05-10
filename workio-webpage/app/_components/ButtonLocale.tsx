@@ -15,7 +15,6 @@ export const ButtonLocale: React.FC = () => {
   const params = useParams();
   const pathName = usePathname();
 
-  console.log(pathName)
   const [selectedLocale, setSelectedLocale] = useState<localesT>(
     params.lang as localesT
   );
@@ -52,8 +51,9 @@ export const ButtonLocale: React.FC = () => {
       </button>
       {isOpen && (
         <div className="flex flex-col items-center justify-center absolute left-0 top-14 bg-wblue-50 py-2 border-wblue-500 border-[1px] rounded-lg">
-          {locales.map((locale: string) => ( // Update the type of the locale parameter to string
+          {locales.map((locale: string, idx) => ( // Update the type of the locale parameter to string
             <div
+            key={idx}
               className={cs(
                 "flex gap-2 p-2 hover:bg-wblue-300 w-36",
                 selectedLocale === locale && "bg-wblue-200"

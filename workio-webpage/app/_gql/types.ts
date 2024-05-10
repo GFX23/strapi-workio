@@ -296,6 +296,7 @@ export type ComponentBlocksFunkceInput = {
 export type ComponentBlogPostSubSection = {
   __typename?: 'ComponentBlogPostSubSection';
   desc?: Maybe<Scalars['String']['output']>;
+  desc1?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   title?: Maybe<Scalars['String']['output']>;
 };
@@ -303,6 +304,7 @@ export type ComponentBlogPostSubSection = {
 export type ComponentBlogPostSubSectionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlogPostSubSectionFiltersInput>>>;
   desc?: InputMaybe<StringFilterInput>;
+  desc1?: InputMaybe<JsonFilterInput>;
   not?: InputMaybe<ComponentBlogPostSubSectionFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentBlogPostSubSectionFiltersInput>>>;
   title?: InputMaybe<StringFilterInput>;
@@ -310,6 +312,7 @@ export type ComponentBlogPostSubSectionFiltersInput = {
 
 export type ComponentBlogPostSubSectionInput = {
   desc?: InputMaybe<Scalars['String']['input']>;
+  desc1?: InputMaybe<Scalars['JSON']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -510,10 +513,12 @@ export type FloatFilterInput = {
 
 export type Footer = {
   __typename?: 'Footer';
+  appStoreLink?: Maybe<Scalars['String']['output']>;
   cornerIcon?: Maybe<UploadFileEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   downloadHere?: Maybe<Scalars['String']['output']>;
   footerText?: Maybe<Scalars['String']['output']>;
+  googlePlayLink?: Maybe<Scalars['String']['output']>;
   links?: Maybe<Array<Maybe<ComponentFooterLinks>>>;
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<FooterRelationResponseCollection>;
@@ -555,9 +560,11 @@ export type FooterEntityResponse = {
 };
 
 export type FooterInput = {
+  appStoreLink?: InputMaybe<Scalars['String']['input']>;
   cornerIcon?: InputMaybe<Scalars['ID']['input']>;
   downloadHere?: InputMaybe<Scalars['String']['input']>;
   footerText?: InputMaybe<Scalars['String']['input']>;
+  googlePlayLink?: InputMaybe<Scalars['String']['input']>;
   links?: InputMaybe<Array<InputMaybe<ComponentFooterLinksInput>>>;
   logo?: InputMaybe<Scalars['ID']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -617,7 +624,53 @@ export type FunkceRelationResponseCollection = {
   data: Array<FunkceEntity>;
 };
 
-export type GenericMorph = BlogPost | Cenik | ComponentAddressLocation | ComponentBlocksBlocks | ComponentBlocksCenik | ComponentBlocksContactBlocks | ComponentBlocksFunkce | ComponentBlocksFunkceFooter | ComponentBlogPostSubSection | ComponentButtonButton | ComponentButtonFooterLink | ComponentFooterLinks | ComponentFooterSocialSites | ComponentInputInput | ComponentSectionSection1 | ComponentSectionSection2 | Footer | Funkce | Homepage | I18NLocale | Kontakt | Navbar | Novinky | Prihlaseni | Registrace | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = BlogPost | Cenik | ComponentAddressLocation | ComponentBlocksBlocks | ComponentBlocksCenik | ComponentBlocksContactBlocks | ComponentBlocksFunkce | ComponentBlocksFunkceFooter | ComponentBlogPostSubSection | ComponentButtonButton | ComponentButtonFooterLink | ComponentFooterLinks | ComponentFooterSocialSites | ComponentInputInput | ComponentSectionSection1 | ComponentSectionSection2 | Footer | Funkce | Heslo | Homepage | I18NLocale | Kontakt | Navbar | Novinky | Prihlaseni | Registrace | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type Heslo = {
+  __typename?: 'Heslo';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  formFailed?: Maybe<Scalars['String']['output']>;
+  formSuccess?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<UploadFileEntityResponse>;
+  inputEmail?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  localizations?: Maybe<HesloRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  submit?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type HesloLocalizationsArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+export type HesloEntity = {
+  __typename?: 'HesloEntity';
+  attributes?: Maybe<Heslo>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type HesloEntityResponse = {
+  __typename?: 'HesloEntityResponse';
+  data?: Maybe<HesloEntity>;
+};
+
+export type HesloInput = {
+  formFailed?: InputMaybe<Scalars['String']['input']>;
+  formSuccess?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['ID']['input']>;
+  inputEmail?: InputMaybe<Scalars['String']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  submit?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type HesloRelationResponseCollection = {
+  __typename?: 'HesloRelationResponseCollection';
+  data: Array<HesloEntity>;
+};
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -843,6 +896,7 @@ export type Mutation = {
   createCenikLocalization?: Maybe<CenikEntityResponse>;
   createFooterLocalization?: Maybe<FooterEntityResponse>;
   createFunkceLocalization?: Maybe<FunkceEntityResponse>;
+  createHesloLocalization?: Maybe<HesloEntityResponse>;
   createHomepageLocalization?: Maybe<HomepageEntityResponse>;
   createKontaktLocalization?: Maybe<KontaktEntityResponse>;
   createNavbarLocalization?: Maybe<NavbarEntityResponse>;
@@ -859,6 +913,7 @@ export type Mutation = {
   deleteCenik?: Maybe<CenikEntityResponse>;
   deleteFooter?: Maybe<FooterEntityResponse>;
   deleteFunkce?: Maybe<FunkceEntityResponse>;
+  deleteHeslo?: Maybe<HesloEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
   deleteKontakt?: Maybe<KontaktEntityResponse>;
   deleteNavbar?: Maybe<NavbarEntityResponse>;
@@ -887,6 +942,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateFooter?: Maybe<FooterEntityResponse>;
   updateFunkce?: Maybe<FunkceEntityResponse>;
+  updateHeslo?: Maybe<HesloEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
   updateKontakt?: Maybe<KontaktEntityResponse>;
   updateNavbar?: Maybe<NavbarEntityResponse>;
@@ -939,6 +995,13 @@ export type MutationCreateFooterLocalizationArgs = {
 
 export type MutationCreateFunkceLocalizationArgs = {
   data?: InputMaybe<FunkceInput>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationCreateHesloLocalizationArgs = {
+  data?: InputMaybe<HesloInput>;
   id?: InputMaybe<Scalars['ID']['input']>;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
@@ -1023,6 +1086,11 @@ export type MutationDeleteFooterArgs = {
 
 
 export type MutationDeleteFunkceArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationDeleteHesloArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
@@ -1144,6 +1212,12 @@ export type MutationUpdateFooterArgs = {
 
 export type MutationUpdateFunkceArgs = {
   data: FunkceInput;
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+};
+
+
+export type MutationUpdateHesloArgs = {
+  data: HesloInput;
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
 };
 
@@ -1325,6 +1399,7 @@ export type Prihlaseni = {
   forgottenPassword?: Maybe<Scalars['String']['output']>;
   inputName?: Maybe<Scalars['String']['output']>;
   inputPassword?: Maybe<Scalars['String']['output']>;
+  invalidCredentials?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<PrihlaseniRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -1355,6 +1430,7 @@ export type PrihlaseniInput = {
   forgottenPassword?: InputMaybe<Scalars['String']['input']>;
   inputName?: InputMaybe<Scalars['String']['input']>;
   inputPassword?: InputMaybe<Scalars['String']['input']>;
+  invalidCredentials?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   registrationButton?: InputMaybe<ComponentButtonButtonInput>;
   signUpButton?: InputMaybe<ComponentButtonButtonInput>;
@@ -1378,6 +1454,7 @@ export type Query = {
   cenik?: Maybe<CenikEntityResponse>;
   footer?: Maybe<FooterEntityResponse>;
   funkce?: Maybe<FunkceEntityResponse>;
+  heslo?: Maybe<HesloEntityResponse>;
   homepage?: Maybe<HomepageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
@@ -1426,6 +1503,12 @@ export type QueryFooterArgs = {
 
 
 export type QueryFunkceArgs = {
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryHesloArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>;
   publicationState?: InputMaybe<PublicationState>;
 };
@@ -1537,14 +1620,27 @@ export type Registrace = {
   inputCheckbox?: Maybe<Scalars['String']['output']>;
   inputCompanyName?: Maybe<Scalars['String']['output']>;
   inputDic?: Maybe<Scalars['String']['output']>;
+  inputEmail?: Maybe<Scalars['String']['output']>;
+  inputFirstName?: Maybe<Scalars['String']['output']>;
   inputIco?: Maybe<Scalars['String']['output']>;
+  inputLastName?: Maybe<Scalars['String']['output']>;
+  inputPassword?: Maybe<Scalars['String']['output']>;
+  inputPasswordConfirmation?: Maybe<Scalars['String']['output']>;
   inputTelefon?: Maybe<Scalars['String']['output']>;
+  linkGDPR?: Maybe<Scalars['String']['output']>;
+  linkGDPRContract?: Maybe<Scalars['String']['output']>;
+  linkVOP?: Maybe<Scalars['String']['output']>;
   locale?: Maybe<Scalars['String']['output']>;
   localizations?: Maybe<RegistraceRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   register?: Maybe<ComponentButtonButton>;
+  registerFailedOnRegister?: Maybe<Scalars['String']['output']>;
+  registerFailedPasswordDoNotMatch?: Maybe<Scalars['String']['output']>;
+  registerFailedValidation?: Maybe<Scalars['String']['output']>;
+  registerSuccess?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+  userDataLabel?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -1572,11 +1668,24 @@ export type RegistraceInput = {
   inputCheckbox?: InputMaybe<Scalars['String']['input']>;
   inputCompanyName?: InputMaybe<Scalars['String']['input']>;
   inputDic?: InputMaybe<Scalars['String']['input']>;
+  inputEmail?: InputMaybe<Scalars['String']['input']>;
+  inputFirstName?: InputMaybe<Scalars['String']['input']>;
   inputIco?: InputMaybe<Scalars['String']['input']>;
+  inputLastName?: InputMaybe<Scalars['String']['input']>;
+  inputPassword?: InputMaybe<Scalars['String']['input']>;
+  inputPasswordConfirmation?: InputMaybe<Scalars['String']['input']>;
   inputTelefon?: InputMaybe<Scalars['String']['input']>;
+  linkGDPR?: InputMaybe<Scalars['String']['input']>;
+  linkGDPRContract?: InputMaybe<Scalars['String']['input']>;
+  linkVOP?: InputMaybe<Scalars['String']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   register?: InputMaybe<ComponentButtonButtonInput>;
+  registerFailedOnRegister?: InputMaybe<Scalars['String']['input']>;
+  registerFailedPasswordDoNotMatch?: InputMaybe<Scalars['String']['input']>;
+  registerFailedValidation?: InputMaybe<Scalars['String']['input']>;
+  registerSuccess?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  userDataLabel?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type RegistraceRelationResponseCollection = {

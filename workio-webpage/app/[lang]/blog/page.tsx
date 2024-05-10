@@ -5,18 +5,20 @@ import { BlogPostEntity, NovinkyEntity } from "../../_gql/types";
 import { Headline } from "../../_components/Headline";
 import { BlogPostCard } from "../../_components/BlogPostCard";
 import { Pagination } from "../../_components/Pagination";
-import { Contact } from "@/_containers/Contact";
+import { Contact } from "@/_components/Contact";
 
 type Props = {
   params: { [lang: string]: string };
-  searchParams: {limit: string, page: string};
+  searchParams: { limit: string; page: string };
 };
 
-const Blog: NextPage<Props> = async ({ params: { lang }, searchParams: {limit, page} }) => {
-  
+const Blog: NextPage<Props> = async ({
+  params: { lang },
+  searchParams: { limit, page },
+}) => {
   const limitNumber = 8;
   const pageNumber = parseInt(page) || 1;
-  
+
   const blogCountR = await apolloClient.query({
     query: getTotalBlogs,
     variables: {
@@ -29,7 +31,10 @@ const Blog: NextPage<Props> = async ({ params: { lang }, searchParams: {limit, p
     variables: {
       locale: lang,
       blogPostsLocale2: lang,
-      pagination: { limit: limitNumber, start: (parseInt(page) - 1) * limitNumber},
+      pagination: {
+        limit: limitNumber,
+        start: (parseInt(page) - 1) * limitNumber,
+      },
     },
   });
 

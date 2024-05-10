@@ -28,8 +28,8 @@ const RootLayout = async ({
       <body className="bg-white w-full flex flex-col justify-between overflow-x-hidden min-h-screen">
         <Navbar locale={lang} />
         {children}
+        <ToastContainer theme="colored" />
         <Footer locale={lang} />
-        <ToastContainer />
       </body>
     </html>
   );

@@ -34,10 +34,10 @@ export const ContactForm: React.FC<Props> = ({ data }) => {
     <form
       ref={formRef}
       action={async (formData) => {
-        console.log(formData.get("name"));
         const r = await sendContactPayload(formData);
         if (!r.success) {
           toast.error(formFailed);
+          return;
         }
         formRef.current?.reset();
         toast.success(formSuccess);
@@ -54,14 +54,15 @@ export const ContactForm: React.FC<Props> = ({ data }) => {
         />
       </div>
       <div className="flex md:flex-row flex-col gap-4 w-full">
-        <Input name="email" placeholder={inputEmail!} type="email" required />
-        <Input name="phone" placeholder={inputPhone!} type="phone" required />
+        <Input name="email" placeholder={inputEmail!} type="email" required minLength={5} maxLength={100} />
+        <Input name="phone" placeholder={inputPhone!} type="phone" required minLength={9} maxLength={20} />
       </div>
       <TextArea
         name="content"
         placeholder={inputRequest!}
         type="text"
         required
+        maxLength={500}
       />
       <Checkbox
         name="terms_accepted"

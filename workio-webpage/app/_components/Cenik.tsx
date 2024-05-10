@@ -21,7 +21,7 @@ export const Cenik: React.FC<Props> = async ({ locale }) => {
   return (
     <div
       id="cenik"
-      className="flex relative xl:max-w-[1200px] flex-col items-center w-full xl:px-0 px-4 pt-6 z-10 mb-10"
+      className="flex relative xl:max-w-[1200px] flex-col items-center w-full xl:px-0 px-4 pt-20 z-10 mb-10"
     >
       <div className="flex flex-col items-center max-w-[450px]">
         <Headline
@@ -34,7 +34,7 @@ export const Cenik: React.FC<Props> = async ({ locale }) => {
       </div>
       <div className="flex xl:flex-row flex-col gap-16 xl:px-20 ">
         {cenikBlock?.map((block, index) => (
-          <div className="border-2 border-wblue-300 rounded-xl p-5 flex flex-col items-center justify-center">
+          <div key={index} className="border-2 border-wblue-300 rounded-xl p-5 flex flex-col items-center justify-center">
             <p className="h2-bold text-center">{block?.title}</p>
             <p className="p text-center my-3">{block?.desc}</p>
             <div className="flex items-end text-wblue-500 gap-[2px]">

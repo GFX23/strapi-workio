@@ -1,21 +1,23 @@
 import { NextPage } from "next";
 import { apolloClient } from "@apollo";
 import { getBlog } from "@gql/query/queries";
-import { BlogPostEntity, ComponentBlogPostSubSection, UploadFile } from "@gql/types";
+import {
+  BlogPostEntity,
+  ComponentBlogPostSubSection,
+  UploadFile,
+} from "@gql/types";
 import { Headline } from "@components/Headline";
 import { ImageW } from "@/_components/ImageW";
 import { News } from "@/_components/News";
 import { BiHomeAlt2 } from "react-icons/bi";
 import Link from "next/link";
-import { Contact } from "@/_containers/Contact";
+import { Contact } from "@/_components/Contact";
 
 type Props = {
-  params: { lang: string, slug: string };
+  params: { lang: string; slug: string };
 };
 
 const BlogPost: NextPage<Props> = async ({ params: { lang, slug } }) => {
-  
-  
   const blogPostR = await apolloClient.query({
     query: getBlog,
     variables: {
@@ -32,7 +34,7 @@ const BlogPost: NextPage<Props> = async ({ params: { lang, slug } }) => {
     <main className="flex w-full justify-center flex-col items-center xl:pt-[104px] pt-20 bg-wblue-100 overflow-hidden px-4">
       <div className="flex gap-3 items-center xl:justify-start justify-center w-full max-w-[1200px] px-4">
         <Link href="/">
-        <BiHomeAlt2 className="text-wblue-500" size={24} />
+          <BiHomeAlt2 className="text-wblue-500" size={24} />
         </Link>
         <div className="w-1 h-1 bg-wblue-500 rounded-full" />
         <Link href="/blog" className="p underline">
